@@ -32,12 +32,16 @@ static void draw_center_text(Layer *layer, GContext *ctx) {
   
   GFont time_font = fonts_get_system_font(useLargeFontSetting ? FONT_TIME_LARGE : FONT_TIME_STANDARD);
   GFont date_font = fonts_get_system_font(useLargeFontSetting ? FONT_DATE_LARGE : FONT_DATE_STANDARD);
+  GFont secondary_text_font = fonts_get_system_font(useLargeFontSetting ? FONT_SECONDARY_TEXT_LARGE : FONT_SECONDARY_TEXT_STANDARD);
 
   int time_height = useLargeFontSetting ? FONT_TIME_LARGE_HEIGHT : FONT_TIME_STANDARD_HEIGHT;
   int time_offset = useLargeFontSetting ? FONT_TIME_LARGE_OFFSET : FONT_TIME_STANDARD_OFFSET;
 
   int date_height = useLargeFontSetting ? FONT_DATE_LARGE_HEIGHT : FONT_DATE_STANDARD_HEIGHT;
   int date_offset = useLargeFontSetting ? FONT_DATE_LARGE_OFFSET : FONT_DATE_STANDARD_OFFSET;
+
+  int secondary_text_height = useLargeFontSetting ? FONT_SECONDARY_TEXT_LARGE_HEIGHT : FONT_SECONDARY_TEXT_STANDARD_HEIGHT;
+  int secondary_text_offset = useLargeFontSetting ? FONT_SECONDARY_TEXT_LARGE_OFFSET : FONT_SECONDARY_TEXT_STANDARD_OFFSET;
 
   int total_height = time_height + LINE_PADDING + date_height;
   int start_y = (bounds.size.h - total_height) / 2;
@@ -58,6 +62,21 @@ static void draw_center_text(Layer *layer, GContext *ctx) {
   graphics_context_set_text_color(ctx, globalSettings.subtextPrimaryColor);
   graphics_draw_text(ctx, dateText, date_font,
                      GRect(0, start_y + time_height + LINE_PADDING - date_offset, bounds.size.w, date_height),
+                     GTextOverflowModeTrailingEllipsis, GTextAlignmentCenter, NULL);
+
+  graphics_context_set_text_color(ctx, globalSettings.subtextSecondaryColor);
+
+  graphics_draw_text(ctx, secondaryText0T(), secondary_text_font,
+                     GRect(0, start_y - 4 - (LINE_PADDING + secondary_text_offset)*2 - secondary_text_offset, bounds.size.w, secondary_text_height),
+                     GTextOverflowModeTrailingEllipsis, GTextAlignmentCenter, NULL);
+  graphics_draw_text(ctx, secondaryText1T(), secondary_text_font,
+                     GRect(0, start_y - 4 - (LINE_PADDING + secondary_text_offset)*1 - secondary_text_offset, bounds.size.w, secondary_text_height),
+                     GTextOverflowModeTrailingEllipsis, GTextAlignmentCenter, NULL);
+  graphics_draw_text(ctx, secondaryText2T(), secondary_text_font,
+                     GRect(0, start_y + time_height + date_height + (LINE_PADDING + secondary_text_offset)*1 - secondary_text_offset, bounds.size.w, secondary_text_height),
+                     GTextOverflowModeTrailingEllipsis, GTextAlignmentCenter, NULL);
+  graphics_draw_text(ctx, secondaryText3T(), secondary_text_font,
+                     GRect(0, start_y + time_height + date_height + (LINE_PADDING + secondary_text_offset)*2 - secondary_text_offset, bounds.size.w, secondary_text_height),
                      GTextOverflowModeTrailingEllipsis, GTextAlignmentCenter, NULL);
 }
 

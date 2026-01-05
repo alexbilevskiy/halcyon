@@ -3,6 +3,26 @@
 #include "settings.h"
 #include "solarUtils.h"
 
+#define SECONDARY_TEXT_LEN 25
+
+static char secondaryText0[SECONDARY_TEXT_LEN];
+static char secondaryText1[SECONDARY_TEXT_LEN];
+static char secondaryText2[SECONDARY_TEXT_LEN];
+static char secondaryText3[SECONDARY_TEXT_LEN];
+
+char *secondaryText0T() {
+    return secondaryText0;
+}
+char *secondaryText1T() {
+    return secondaryText1;
+}
+char *secondaryText2T() {
+    return secondaryText2;
+}
+char *secondaryText3T() {
+    return secondaryText3;
+}
+
 void (*message_processed_callback)(void);
 
 void messaging_init(void (*processed_callback)(void)) {
@@ -117,6 +137,33 @@ void inbox_received_callback(DictionaryIterator *iterator, void *context) {
 
   if(useLargeFonts_tuple != NULL) {
     globalSettings.useLargeFonts = (bool)useLargeFonts_tuple->value->int8;
+  }
+
+  // Or perhaps it contains secondary text?
+  Tuple *secondaryText0_tuple = dict_find(iterator, MESSAGE_KEY_SECONDARY_TEXT_0);
+  if(secondaryText0_tuple != NULL) {
+      APP_LOG(APP_LOG_LEVEL_INFO, "indeed its text!");
+//    char *secondaryText0 = secondaryText0_tuple->value->cstring;
+    APP_LOG(APP_LOG_LEVEL_INFO, secondaryText0_tuple->value->cstring);
+    snprintf(secondaryText0, sizeof(secondaryText0), "%s", secondaryText0_tuple->value->cstring);
+  }
+  Tuple *secondaryText1_tuple = dict_find(iterator, MESSAGE_KEY_SECONDARY_TEXT_1);
+  if(secondaryText1_tuple != NULL) {
+//    char *secondaryText1 = secondaryText1_tuple->value->cstring;
+    APP_LOG(APP_LOG_LEVEL_INFO, secondaryText1_tuple->value->cstring);
+    snprintf(secondaryText1, sizeof(secondaryText1), "%s", secondaryText1_tuple->value->cstring);
+  }
+  Tuple *secondaryText2_tuple = dict_find(iterator, MESSAGE_KEY_SECONDARY_TEXT_2);
+  if(secondaryText2_tuple != NULL) {
+//    char *secondaryText2 = secondaryText2_tuple->value->cstring;
+    APP_LOG(APP_LOG_LEVEL_INFO, secondaryText2_tuple->value->cstring);
+    snprintf(secondaryText2, sizeof(secondaryText2), "%s", secondaryText2_tuple->value->cstring);
+  }
+  Tuple *secondaryText3_tuple = dict_find(iterator, MESSAGE_KEY_SECONDARY_TEXT_3);
+  if(secondaryText3_tuple != NULL) {
+//    char *secondaryText3 = secondaryText3_tuple->value->cstring;
+    APP_LOG(APP_LOG_LEVEL_INFO, secondaryText3_tuple->value->cstring);
+    snprintf(secondaryText3, sizeof(secondaryText3), "%s", secondaryText3_tuple->value->cstring);
   }
 
   Settings_saveToStorage();

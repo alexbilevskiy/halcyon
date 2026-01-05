@@ -1,5 +1,5 @@
 {
-    "name": "halcyon-pebble",
+    "name": "halcyon-notif-pebble",
     "author": "Freakified",
     "version": "1.6.0",
     "keywords": [
@@ -7,10 +7,10 @@
     ],
     "private": true,
     "pebble": {
-        "displayName": "Halcyon",
-        "uuid": "c8e97ab8-7c12-45fb-975d-e85d5de61e8b",
+        "displayName": "Halcyon Notif",
+        "uuid": "756405d7-3bb5-4ad8-85c8-886025076b3b",
         "sdkVersion": "3",
-        "enableMultiJS": true,
+        "enableMultiJS": false,
         "targetPlatforms": [
             "aplite",
             "basalt",
@@ -27,26 +27,40 @@
             "hiddenApp": false,
             "watchface": true
         },
-        "messageKeys": [
-            "LOCATION_LAT",
-            "LOCATION_LNG",
-            "LOCATION_GMT_OFFSET",
-            "SETTING_PRESET",
-            "SETTING_TIME_COLOR",
-            "SETTING_SUBTEXT_PRIMARY_COLOR",
-            "SETTING_SUBTEXT_SECONDARY_COLOR",
-            "SETTING_BG_COLOR",
-            "SETTING_PIP_COLOR_PRIMARY",
-            "SETTING_PIP_COLOR_SECONDARY",
-            "SETTING_RING_STROKE_COLOR",
-            "SETTING_RING_NIGHT_COLOR",
-            "SETTING_RING_DAY_COLOR",
-            "SETTING_RING_SUNRISE_COLOR",
-            "SETTING_RING_SUNSET_COLOR",
-            "SETTING_SUN_STROKE_COLOR",
-            "SETTING_SUN_FILL_COLOR",
-            "SETTING_USE_LARGE_FONTS"
-        ],
+        "companionApp": {
+            "android": {
+                "url": "https://github.com/alexbilevskiy/fossilnotify",
+                "apps": [
+                    {
+                        "package": "nodomain.freeyourgadget.fossilnotify"
+                    }
+                ]
+            }
+        },
+        "messageKeys": {
+          "LOCATION_LAT" :0,
+          "LOCATION_LNG": 1,
+          "LOCATION_GMT_OFFSET": 2,
+          "SETTING_PRESET": 3,
+          "SETTING_TIME_COLOR": 4,
+          "SETTING_SUBTEXT_PRIMARY_COLOR": 5,
+          "SETTING_SUBTEXT_SECONDARY_COLOR": 6,
+          "SETTING_BG_COLOR": 7,
+          "SETTING_PIP_COLOR_PRIMARY": 8,
+          "SETTING_PIP_COLOR_SECONDARY": 9,
+          "SETTING_RING_STROKE_COLOR": 10,
+          "SETTING_RING_NIGHT_COLOR": 11,
+          "SETTING_RING_DAY_COLOR": 12,
+          "SETTING_RING_SUNRISE_COLOR": 13,
+          "SETTING_RING_SUNSET_COLOR": 14,
+          "SETTING_SUN_STROKE_COLOR": 15,
+          "SETTING_SUN_FILL_COLOR": 16,
+          "SETTING_USE_LARGE_FONTS": 17,
+          "SECONDARY_TEXT_0": 18,
+          "SECONDARY_TEXT_1": 19,
+          "SECONDARY_TEXT_2": 20,
+          "SECONDARY_TEXT_3": 21
+        },
         "resources": {
             "media": [
                 {
