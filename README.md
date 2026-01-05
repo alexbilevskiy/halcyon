@@ -1,3 +1,5 @@
+# Fork notice
+This is a fork of https://github.com/freakified/halcyon adding integration with https://github.com/alexbilevskiy/fossilnotify?tab=readme-ov-file
 # Halcyon
 An analog-digital watchface featuring the solar day, created for [Rebble Hackathon 002](https://rebble.io/hackathon-002/).
 
